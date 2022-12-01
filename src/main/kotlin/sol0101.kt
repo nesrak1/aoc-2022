@@ -1,27 +1,22 @@
 import java.io.File
 
 fun sol01A(args: Array<String>) {
-    var curMax = 0
     var curChk = 0
     val tops = ArrayList<Int>()
-    File("input.txt").readLines().forEach {
+    File("input_01.txt").readLines().forEach {
         if (it.trim() == "") {
             tops.add(curChk)
-            if (curChk > curMax) {
-                curMax = curChk
-            }
             curChk = 0
         } else {
             curChk += it.toInt()
         }
     }
-    if (curChk > curMax) {
-        curMax = curChk
-    }
+    tops.add(curChk)
 
-    tops.sort()
-    val top3Sum = tops.slice(tops.size - 3 until tops.size).sum()
+    tops.sortDescending()
+    val top1 = tops[0]
+    val top3Sum = tops.slice(0 until 3).sum()
 
-    println("part a: $curMax")
+    println("part a: $top1")
     println("part b: $top3Sum")
 }
