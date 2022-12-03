@@ -8,13 +8,13 @@ fun sol03A(args: Array<String>) {
         val lineB = it.substring(lineLenHalf)
         var matchingChar = 0.toChar()
         lineA.forEach { c -> if (lineB.contains(c)) matchingChar = c }
-        if (matchingChar in 'a'..'z') {
-            sum += matchingChar - 'a' + 1
-        } else if (matchingChar in 'A' .. 'z') {
-            sum += matchingChar - 'A' + 27
-        } else {
-            println("couldn't find matching char")
-            return
+        sum += when (matchingChar) {
+            in 'a'..'z' -> matchingChar - 'a' + 1
+            in 'A' .. 'z' -> matchingChar - 'A' + 27
+            else -> {
+                println("couldn't find matching char")
+                return
+            }
         }
     }
     println("sum: $sum")
@@ -33,13 +33,13 @@ fun sol03B(args: Array<String>) {
             return
         }
         val matchingChar = matchingChars.first()
-        if (matchingChar in 'a'..'z') {
-            sum += matchingChar - 'a' + 1
-        } else if (matchingChar in 'A' .. 'z') {
-            sum += matchingChar - 'A' + 27
-        } else {
-            println("couldn't find matching char")
-            return
+        sum += when (matchingChar) {
+            in 'a'..'z' -> matchingChar - 'a' + 1
+            in 'A' .. 'z' -> matchingChar - 'A' + 27
+            else -> {
+                println("couldn't find matching char")
+                return
+            }
         }
     }
     println("sum: $sum")
