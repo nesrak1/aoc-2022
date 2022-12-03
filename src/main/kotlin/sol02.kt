@@ -6,13 +6,10 @@ fun sol02A(args: Array<String>) {
         val spl = it.split(" ")
         val opp = spl[0][0] - 'A'
         val you = spl[1][0] - 'X'
-        var roundScore: Int
-        if (opp == you) {
-            roundScore = 3
-        } else if ((you+1)%3 == opp) {
-            roundScore = 0
-        } else {
-            roundScore = 6
+        var roundScore = when (opp) {
+            you -> 3
+            (you+1)%3 -> 0
+            else -> 6
         }
         roundScore += you + 1
         score += roundScore
